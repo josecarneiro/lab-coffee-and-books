@@ -9,7 +9,7 @@ const sassMiddleware = require('node-sass-middleware');
 const serveFavicon = require('serve-favicon');
 
 const indexRouter = require('./routes/index');
-const usersRouter = require('./routes/user');
+const placeRouter = require('./routes/places');
 
 const app = express();
 
@@ -31,7 +31,7 @@ app.use(sassMiddleware({
 }));
 
 app.use('/', indexRouter);
-app.use('/user', usersRouter);
+app.use('/places', placeRouter);
 
 // Catch missing routes and forward to error handler
 app.use((req, res, next) => {

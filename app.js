@@ -10,12 +10,19 @@ const serveFavicon = require('serve-favicon');
 
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/user');
+//place router added
+const placeRouter = require('./models/place');
+
 
 const app = express();
 
 // Setup view engine
 app.set('views', join(__dirname, 'views'));
 app.set('view engine', 'hbs');
+
+//register prtials
+const hbs = require('hbs');
+hbs.registerPartials(__dirname + '/views/partials');
 
 app.use(logger('dev'));
 app.use(express.json());
@@ -32,6 +39,8 @@ app.use(sassMiddleware({
 
 app.use('/', indexRouter);
 app.use('/user', usersRouter);
+app.use('/place', placeRouter);
+
 
 // Catch missing routes and forward to error handler
 app.use((req, res, next) => {

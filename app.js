@@ -9,9 +9,10 @@ const sassMiddleware = require('node-sass-middleware');
 const serveFavicon = require('serve-favicon');
 
 const indexRouter = require('./routes/index');
-const usersRouter = require('./routes/user');
-
+const placesRouter = require('./routes/places');
+const hbs = require('hbs');
 const app = express();
+hbs.registerHelper('JSON', context => JSON.stringify(context, null, 2));
 
 // Setup view engine
 app.set('views', join(__dirname, 'views'));
@@ -31,7 +32,7 @@ app.use(sassMiddleware({
 }));
 
 app.use('/', indexRouter);
-app.use('/user', usersRouter);
+app.use('/places', placesRouter);
 
 // Catch missing routes and forward to error handler
 app.use((req, res, next) => {

@@ -5,7 +5,7 @@
   "scripts": {
     "start": "node ./server",
     "dev": "nodemon ./server",
-    "dev:debug": "DEBUG=base* npm run dev",
+    "dev:debug": "DEBUG=node-geo* npm run dev",
     "lint": "eslint ."
   },
   "dependencies": {

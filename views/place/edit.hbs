@@ -1,0 +1,18 @@
+<h1>This is edit place</h1>
+<div id="map"></div>
+<form action="/places/{{place._id}}/edit" method="POST">
+  <div id="map"></div>
+  <input type="text" name="name" required placeholder="Place Name" />
+  <select name="type">
+    <option value="coffe-shop">Coffe-Shop</option>
+    <option value="bookstore">Bookstore</option>
+  </select>
+  <input type="text" name="latitude" min="-90" max="90" disable required placeholder="Latitude" />
+  <input type="text" name="longitude" min="-180" max="180" disable required placeholder="Longitude" />
+  <button>Update Place</button>
+</form>
+
+
+
+{{!-- <input type="text" name="latitude" min="-90" max="90" disable required placeholder="Latitude" />
+  <input type="text" name="longitude" min="-180" max="180" disable required placeholder="Longitude" /> --}}

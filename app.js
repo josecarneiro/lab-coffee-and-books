@@ -1,6 +1,8 @@
 'use strict';
 
-const { join } = require('path');
+const {
+  join
+} = require('path');
 const express = require('express');
 const createError = require('http-errors');
 const cookieParser = require('cookie-parser');
@@ -26,7 +28,9 @@ hbs.registerPartials(__dirname + '/views/partials');
 
 app.use(logger('dev'));
 app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
+app.use(express.urlencoded({
+  extended: false
+}));
 app.use(cookieParser());
 app.use(serveFavicon(join(__dirname, 'public/images', 'favicon.ico')));
 app.use(express.static(join(__dirname, 'public')));
@@ -36,6 +40,7 @@ app.use(sassMiddleware({
   outputStyle: process.env.NODE_ENV === 'development' ? 'nested' : 'compressed',
   sourceMap: true
 }));
+
 
 app.use('/', indexRouter);
 app.use('/user', usersRouter);

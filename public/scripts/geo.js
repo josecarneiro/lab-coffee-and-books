@@ -1,7 +1,7 @@
 'use strict';
 
 //initmap function (callback function from google)
-function initMap(value) {
+function initMap() {
     const $mapContainer = document.getElementById('map');
     if ($mapContainer) {
         const map = new window.google.maps.Map($mapContainer, {
@@ -29,17 +29,29 @@ function initMap(value) {
             map
         });
 
+
+        const $inputLatitude = document.querySelector('input[name="latitude"]');
+        const $inputLongitude = document.querySelector('input[name="longitude"]');
+
+        let placedMarker;
         //when the user clicks on the map, we save its position and place it in a marker
         map.addListener('click', event => {
             const position = {
                 lat: event.latLng.lat(),
                 lng: event.latLng.lng()
             };
-            new window.google.maps.Marker({
+
+            $inputLatitude.value = position.lat;
+            $inputLongitude.value = position.lng;
+
+            if (placedMarker) {
+                placedMarker.setMap(null);
+            }
+
+            placedMarker = new window.google.maps.Marker({
                 position,
                 map
             });
         });
-        
-    }
+    };
 };

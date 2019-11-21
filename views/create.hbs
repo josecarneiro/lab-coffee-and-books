@@ -1,0 +1,41 @@
+<h2>Create a new place</h2>
+<form action="/places/create" method="POST">
+  <div id="map"></div>
+  <label for="input-name">Name</label>
+  <input id="input-name" name="name" type="text" required/> 
+  <label for="input-type">Type</label>
+  <input id="input-type" name="type" type="text" required/> 
+  <label for="input-location">Location</label>
+  <input id="input-location" name="latitude" min="-90" max="90" type="text" placeholder="latitude" disable required/> 
+  <input id="input-location" name="longitude" min="-180" max="180" type="text" placeholder="longitude" disable required/> 
+  <button>Create</button>
+</form>
+
+
+<script>
+  function initMap () {
+    const $mapContainer = document.getElementById('map');
+    const map = new window.google.maps.Map($mapContainer, {
+      center: { lat: 38.7, lng: -9.14 },
+      zoom: 12
+    });
+    const $inputLatitude = document.querySelector('input[name="latitude"]');
+    const $inputLongitude = document.querySelector('input[name="longitude"]');
+    let placedMarker;
+    map.addListener('click', event => {
+      const position = {
+        lat: event.latLng.lat(),
+        lng: event.latLng.lng()
+      };
+      $inputLatitude.value = position.lat;
+      $inputLongitude.value = position.lng;
+      if (placedMarker) {
+        placedMarker.setMap(null);
+      }
+      placedMarker = new window.google.maps.Marker({
+        position,
+        map
+      });
+    });
+  }
+</script> 

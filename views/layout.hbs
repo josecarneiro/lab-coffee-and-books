@@ -8,6 +8,17 @@
     <link rel="stylesheet" href="/styles/style.css" />
   </head>
   <body>
+    <nav>
+      <a href="/">Home</a>
+      <a href="/places">Places</a>
+    </nav>
     {{{body}}}
+    <script>
+      if (!window.initMap) {
+        window.initMap = function () {}; 
+      }
+    </script>
+      <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDGD7_VrYPlO5F-qYuZSo_KSNAjHWev2Tg&callback=initMap"
+    async defer></script>
   </body>
 </html>

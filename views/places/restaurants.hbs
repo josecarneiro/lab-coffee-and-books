@@ -1,0 +1,9 @@
+<div id="map"></div>
+
+<ul>
+  {{#each places}}
+  <li>
+  <a href="/restaurants/{{this._id}}">{{this.name}}</a>
+  </li>
+  {{/each}}
+</ul>

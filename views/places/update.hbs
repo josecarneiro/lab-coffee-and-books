@@ -1,0 +1,20 @@
+<h1>In here we will be updating</h1>
+
+<h2>In this case, we will be updating the {{place.type}} named {{place.name}}</h2>
+
+<form action="/places/update/{{place._id}}" method="POST">
+    <label for="name">Change Place's Name:</label>
+    <br>
+    <input type="text" name="name" placeholder="{{place.name}}" id="name">
+    <br>
+    <br>
+    <label for="type">Change Place's Type. The type right now is {{place.type}}</label>
+    <br>
+    <select name="type" id="type">
+        <option value="coffee-shop">Coffe Shop</option>
+        <option value="bookstore">Bookstore</option>
+    </select>
+    <br>
+    <br>
+    <button>Submit changes</button>
+</form>

@@ -1,0 +1,12 @@
+<h1>We will be listing everything here</h1>
+<ul>
+{{#each place}}
+    <li>{{this.name}}</li>
+    <ul>
+        <li><a href="/places/update/{{this._id}}">Update</a></li>
+        <form action="/places/delete/{{this._id}}" method="POST">
+            <button>Delete</button>
+        </form>
+    </ul>
+{{/each}}
+</ul>

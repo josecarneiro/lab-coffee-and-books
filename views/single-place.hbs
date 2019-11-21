@@ -1,0 +1,30 @@
+<h2>{{place.name}}</h2>
+<div id="map"></div>
+<form action="/places/{{place.id}}/update" method='GET'>
+  <button>Edit</button>
+</form>
+<form action="/places/{{place.id}}/delete" method='POST'>
+  <button>Delete</button>
+</form>
+
+<script>  
+  const position = {
+    lat: {{{ place.location.coordinates.[1] }}},
+    lng: {{{ place.location.coordinates.[0] }}}    
+  }
+
+  function initMap() {
+    const $mapContainer = document.getElementById('map');    
+    if ($mapContainer) {
+      const map = new window.google.maps.Map($mapContainer, {
+        center: position,
+        zoom: 12
+      });
+      
+      const marker = new window.google.maps.Marker({
+        position,
+        map        
+      });
+    }
+  }
+</script> 

@@ -1,0 +1,15 @@
+<h1>Update {{place.name}}</h1>
+<form {{!-- action="/places/{{places.id}}" --}} method="POST">
+  <label for="input-name">Name</label>
+  <input id="input-name" name="name" type="text" placeholder={{place.name}} required/> 
+  <label for="input-type">Type</label>
+  <input id="input-type" name="type" type="text" placeholder={{place.type}} required/> 
+  <label for="input-location">Location</label>
+  <input id="input-location" name="latitude" min="-90" max="90" type="text" placeholder={{place.location.coordinates.[1]}} disable required/> 
+  <input id="input-location" name="longitude" min="-180" max="180" type="text" placeholder={{place.location.coordinates.[0]}} disable required/> 
+  <button>Update</button>
+</form>
+<div id="map"></div>
+
+<script>  
+</script> 

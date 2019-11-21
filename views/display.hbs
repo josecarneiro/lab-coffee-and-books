@@ -1,0 +1,7 @@
+<h2>Neat spots</h2>
+<ul>
+  {{#each places}}
+  <li><a href="/places/{{this._id}}"> {{this.name}}</a></li>
+  {{/each}}
+</ul>
+<a href='/places/create'>Suggest a cool spot</a>

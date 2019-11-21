@@ -1,2 +1,18 @@
 <h1>{{title}}</h1>
 <p>Welcome to {{title}}</p>
+
+<div id = "map"></div>
+
+<script>
+  function initMap () {
+    const $mapContainer = document.getElementById('map');
+    const map = new window.google.maps.Map($mapContainer, {
+      center: { lat: 38.7, lng: -9.14 },
+      zoom: 12
+    });
+    const $inputLatitude = document.querySelector('input[name="latitude"]');
+    const $inputLongitude = document.querySelector('input[name="longitude"]');
+    let placedMarker;
+  }
+</script>
+

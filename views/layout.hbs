@@ -9,5 +9,11 @@
   </head>
   <body>
     {{{body}}}
+  <script>
+      if (!window.initMap) {
+        window.initMap = function () {}; 
+      }
+  </script>
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDGD7_VrYPlO5F-qYuZSo_KSNAjHWev2Tg&callback=initMap"></script>
   </body>
 </html>

@@ -1,0 +1,10 @@
+<h2>Edit a place</h2>
+{{#with data}}
+<div class="edit-container">
+  <form action="/{{this._id}}/edit" method="post">
+    <input name="name" type="text" value="{{this.name}} ">
+    <input name="type" type="text" value="{{this.type}}">
+    <button>Submit</button>
+  </form>
+</div>
+{{/with}}

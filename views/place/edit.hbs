@@ -1,0 +1,15 @@
+<h2>Edit this place's information</h2>
+<br>
+<form method="POST">
+<label for="name">Name</label>
+<input type="text" name="name" id="name" placeholder="Name" value="{{place.name}}">
+<br>
+<select name="type" value="{{place.type}}" selected>
+    <option value="coffee shop">Coffee Shop</option>
+    <option value="bookstore">Bookstore</option>
+  </select>
+<br>
+<button>Edit place</button>
+</form>
+<br>
+<h4><a href="/place/{{ place.id }}">Go back</a></h4>

@@ -1,0 +1,11 @@
+<h1>{{place.name}}</h1>
+<p>{{place.type}}</p>
+<p>{{place.location.coordinates.[1]}}</p>
+<p>{{place.location.coordinates.[0]}}</p>
+
+<a href="/places/edit/{{place._id}}">Edit</a>
+<form action="/places/{{place._id }}/delete" method="POST">
+  <button>Delete</button>
+</form>
+
+{{!-- <div class="single-map"></div> --}}

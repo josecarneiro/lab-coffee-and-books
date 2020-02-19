@@ -1,0 +1,52 @@
+<section id="list-page">
+
+{{#each places}} 
+<div class="place-card">
+  <a href="places/{{_id}}"><h4>{{name}}</h4></a>
+  <p>{{type}}</p>
+  <p>{{location.coordinates.[1]}}</p>
+  <p>{{location.coordinates.[0]}}</p>
+</div>
+
+{{/each}}
+
+</section>
+
+<div id="list-map"></div>
+
+<a href="/places/new">Add a new location</a>
+
+<script>
+  const $listMap = document.getElementById('list-map');
+  const list = [
+    {{#each places}}
+      {
+        id: "{{_id}}",
+        position: {
+          lat: {{ location.coordinates.[1] }},
+          lng: {{ location.coordinates.[0] }}
+        }
+      },
+    {{/each}}
+  ];
+  
+  function initMap() {
+    const map = new window.google.maps.Map($listMap, {
+      center: { lat: 38, lng: -9},
+      zoom : 9
+    });
+  
+    for (place of list) {
+      const marker = new window.google.maps.Marker({
+        position: place.position,
+        map
+      });
+      
+      marker.addListener('click', () => {
+        window.location = `/places/${place.id}`;
+      })
+    }
+  }
+</script>
+
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBrJ1f_9MB0iFA2zFsHIbIK8sGWU91aQr8&callback=initMap"></script>

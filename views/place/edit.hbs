@@ -1,0 +1,20 @@
+  
+<form method="POST">
+  <label name="name">Name</label>
+  <input type="text" placeholder="Name" name="name" id="name" value="{{ place.name }}"> 
+
+  <label name="type">Type</label>
+  <select name="type">
+  <option value="coffee shop">Coffee Shop</option>
+  <option value="bookstore">Bookstore</option>
+  </select>
+  
+
+  <label name="latitude">Latitude</label>
+  <input type="number" placeholder="Latitude" name="latitude" id="latitude" value="{{ place.location.coordinates.[0] }}">
+
+  <label name="latitude">Longitude</label>
+  <input type="number" placeholder="Longitude" name="longitude" id="longitude" value="{{ place.location.coordinates.[1] }}">
+
+  <button>Edit Place</button>
+</form>

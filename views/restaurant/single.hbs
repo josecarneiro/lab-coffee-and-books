@@ -4,7 +4,8 @@
 <span>{{ restaurant.location.coordinates.[0] }}</span>
 <span>{{ restaurant.location.coordinates.[1] }}</span>
 
-<div id="sample-map" class="map"></div>
+<div id="sample-map" class="map" style="height: 100%"></div>
+<div>a</div>
 
 <script>
   const $sampleMap = document.getElementById('sample-map');
@@ -27,8 +28,8 @@
   }
 </script>
 
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAUm55eWjiFwtRCs9o4DI4tRkoc6CCeAec&callback=initMap"></script>
-
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAUm55eWjiFwtRCs9o4DI4tRkoc6CCeAec&callback=initMap"
+    async defer></script>
 
 
 <a href="/restaurant/edit/{{  restaurant._id }}">Edit Restaurant</a>

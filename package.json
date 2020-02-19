@@ -11,11 +11,11 @@
   "dependencies": {
     "cookie-parser": "^1.4.4",
     "debug": "^2.6.9",
-    "dotenv": "^8.1.0",
+    "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "hbs": "^4.0.4",
     "http-errors": "^1.7.3",
-    "mongoose": "^=5.6.13",
+    "mongoose": "^5.9.1",
     "morgan": "^1.9.1",
     "node-sass-middleware": "0.11.0",
     "serve-favicon": "^2.5.0"
@@ -27,5 +27,18 @@
     "eslint-plugin-import": "^=2.18.2",
     "eslint-plugin-node": "^=0.0.0",
     "eslint-plugin-promise": "^=4.2.1"
-  }
+  },
+  "description": "![logo_ironhack_blue 7](https://user-images.githubusercontent.com/23629340/40541063-a07a0a8a-601a-11e8-91b5-2f13e4e6b441.png)",
+  "main": "app.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DavidFelix8/lab-coffee-and-books.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/DavidFelix8/lab-coffee-and-books/issues"
+  },
+  "homepage": "https://github.com/DavidFelix8/lab-coffee-and-books#readme"
 }

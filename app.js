@@ -1,6 +1,8 @@
 'use strict';
 
-const { join } = require('path');
+const {
+  join
+} = require('path');
 const express = require('express');
 const createError = require('http-errors');
 const cookieParser = require('cookie-parser');
@@ -10,6 +12,9 @@ const serveFavicon = require('serve-favicon');
 
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/user');
+//place router added
+const placeRouter = require('./models/place');
+
 
 const app = express();
 
@@ -17,9 +22,15 @@ const app = express();
 app.set('views', join(__dirname, 'views'));
 app.set('view engine', 'hbs');
 
+//register prtials
+const hbs = require('hbs');
+hbs.registerPartials(__dirname + '/views/partials');
+
 app.use(logger('dev'));
 app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
+app.use(express.urlencoded({
+  extended: false
+}));
 app.use(cookieParser());
 app.use(serveFavicon(join(__dirname, 'public/images', 'favicon.ico')));
 app.use(express.static(join(__dirname, 'public')));
@@ -30,8 +41,11 @@ app.use(sassMiddleware({
   sourceMap: true
 }));
 
+
 app.use('/', indexRouter);
 app.use('/user', usersRouter);
+app.use('/place', placeRouter);
+
 
 // Catch missing routes and forward to error handler
 app.use((req, res, next) => {

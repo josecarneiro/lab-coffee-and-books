@@ -10,6 +10,7 @@ const serveFavicon = require('serve-favicon');
 
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/user');
+const placesRouter = require('./routes/places');
 
 const app = express();
 
@@ -23,15 +24,19 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(serveFavicon(join(__dirname, 'public/images', 'favicon.ico')));
 app.use(express.static(join(__dirname, 'public')));
-app.use(sassMiddleware({
-  src: join(__dirname, 'public'),
-  dest: join(__dirname, 'public'),
-  outputStyle: process.env.NODE_ENV === 'development' ? 'nested' : 'compressed',
-  sourceMap: true
-}));
+app.use(
+  sassMiddleware({
+    src: join(__dirname, 'public'),
+    dest: join(__dirname, 'public'),
+    outputStyle: process.env.NODE_ENV === 'development' ? 'nested' : 'compressed',
+    force: true,
+    sourceMap: true
+  })
+);
 
 app.use('/', indexRouter);
 app.use('/user', usersRouter);
+app.use('/places', placesRouter);
 
 // Catch missing routes and forward to error handler
 app.use((req, res, next) => {

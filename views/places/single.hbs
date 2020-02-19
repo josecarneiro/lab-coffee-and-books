@@ -1,0 +1,27 @@
+{{#with place}}
+<h2>{{name}}</h2>
+<p>{{type}}</p>
+<img src="https://source.unsplash.com/900x600/?coffee-shop" alt="">
+
+
+<p>Created on: {{timestamps}}</p>
+
+<div id="map"></div>
+
+<a href="/places/{{_id}}/edit" class="btn btn-width">Edit</a>
+<form action="/places/{{_id}}/delete" method="POST"><button class="btn-delete">Delete</button></form></li>
+
+
+<script>
+const longitude = {{location.coordinates.[0]}};
+const latitude = {{location.coordinates.[1]}};
+function initMap() {
+  const uluru = {lat: latitude, lng: longitude};
+  const map = new google.maps.Map(
+      document.getElementById('map'), {zoom: 15, center: uluru});
+const marker = new google.maps.Marker({position: uluru, map: map});
+}
+</script>
+{{>maps}}
+
+{{/with}}

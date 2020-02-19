@@ -1,0 +1,43 @@
+<h1>All places you can go!</h1>
+
+<ul>
+{{#each places}}
+<li><a href="/places/{{_id}}">{{name}}</a> || {{type}}</li>
+{{/each}}
+</ul>
+
+<div id="map"></div>
+
+<script>
+
+const list = [
+  {{#each places}}
+    {
+      id: "{{_id}}",
+      position: {
+        lat: {{location.coordinates.[1] }},
+        lng: {{ location.coordinates.[0] }}
+      },
+      type: "{{ type }}"
+    },
+  {{/each}}
+]
+
+  function initMap() {
+  const uluru = {lat: -27.0016, lng: -48.6379};
+  const map = new google.maps.Map(
+    document.getElementById('map'), {zoom: 13, center: uluru});
+console.log(list)
+    for (let place of list) {
+      if (place.type === 'bookstore') {
+  let marker =  new google.maps.Marker({position: place.position, map});
+      } else {
+        let marker =  new google.maps.Marker({position: place.position, map});
+   
+      }
+      }
+
+}
+    
+</script>
+{{>maps}}

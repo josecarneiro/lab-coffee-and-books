@@ -1,15 +1,15 @@
-<h1>We will be listing everything here</h1>
+<h1>Place's list</h1>
 
 <a href="/places/create">Create a place</a>
 
 <ul>
-{{#each place}}
-    <li>{{this.name}}</li>
+    {{#each place}}
+    <li><a href="/places/{{this._id}}">{{this.name}}</a></li>
     <ul>
         <li><a href="/places/update/{{this._id}}">Update</a></li>
         <form action="/places/delete/{{this._id}}" method="POST">
-            <button>Delete</button>
+            <button>Delete this place</button>
         </form>
     </ul>
-{{/each}}
+    {{/each}}
 </ul>

@@ -1,0 +1,21 @@
+<h1>Edit {{ restaurant.name }}</h1>
+
+
+<form action="" method="POST">
+  <label for="name">name</label>
+  <input type="text" name="name" id="name" placeholder="{{ restaurant.name }}" required/>
+
+  <select name="type" required>
+    <option value="coffee shop">Coffee Shop</option>
+    <option value="bookstore">Bookstore</option>
+  </select>
+
+  <label for="latitude">Latitude</label>
+  <input type="text" name="latitude" id="latitude" placeholder="{{ restaurant.location.coordinates.[0] }}" step="any"/>
+
+  <label for="longitude">Longitude</label>
+  <input type="text" name="longitude" id="longitude" placeholder="{{ restaurant.location.coordinates.[1] }}" step="any"/>
+
+  
+  <button>Save restaurant</button>
+</form>

@@ -10,7 +10,8 @@ const serveFavicon = require('serve-favicon');
 
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/user');
-//const restaurantRouter = require('./routes/restaurant');
+
+const restaurantRouter = require('./routes/restaurant');
 
 const app = express();
 
@@ -37,7 +38,9 @@ app.use(sassMiddleware({
 
 app.use('/', indexRouter);
 app.use('/user', usersRouter);
-//app.use('/restaurant', restaurantRouter);
+
+//RESTAURANT ROUTE
+app.use('/restaurant', restaurantRouter);
 
 // Catch missing routes and forward to error handler
 app.use((req, res, next) => {

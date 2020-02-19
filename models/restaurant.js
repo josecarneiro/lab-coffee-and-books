@@ -28,6 +28,7 @@ const schema = new mongoose.Schema({
       }
     ]
   }
+  //timestamps: { currentTime: () => Math.floor(Date.now() / 1000) }
 });
 
 schema.index({ location: '2dsphere' });

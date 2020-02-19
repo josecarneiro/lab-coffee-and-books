@@ -1,0 +1,39 @@
+body {
+  margin: 0;
+  padding: 50px;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+a {
+  color: #00b7ff;
+}
+
+.buttons {
+  display: flex;
+  flex-direction: row;
+}
+
+.buttons button {
+  margin-right: 1em;
+}
+
+form input,
+form label {
+  margin-bottom: 1.5em;
+}
+
+nav {
+  margin-bottom: 1em;
+}
+
+nav a {
+  margin-right: 1em;
+}
+
+#map,
+#list-map {
+  width: 80%;
+  max-width: 700px;
+  height: 400px;
+}
+
+/*# sourceMappingURL=style.css.map */

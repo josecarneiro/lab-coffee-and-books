@@ -1,0 +1,24 @@
+{{#with place}}
+<h1>Edit a {{name}}</h1>
+
+<form action="" method="POST">
+
+<label for="name">Name:</label>
+<input type="text" name="name" id="name" placeholder="Write name" required value="{{name}}">
+
+<div>
+  <label for="bookstore">Type:</label><br>
+<input type="radio" id="bookstore" name="type" value="bookstore">
+<label for="bookstore">Bookstore</label><br>
+<input type="radio" id="coffee shop" name="type" value="coffee shop">
+<label for="coffee shop">Coffee Shop</label><br>
+</div>
+
+<label for="location">Location</label>
+  <input type="number" placeholder="Latitude" name="latitude" id="location">
+  <input type="number" placeholder="Longitude" name="longitude" id="location">
+
+<button>Edit</button>
+
+</form>
+{{/with}}

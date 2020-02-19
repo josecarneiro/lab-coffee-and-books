@@ -1,0 +1,23 @@
+<a href="/create">Create a place</a>
+{{#each place}}
+<div>
+  <p>{{ this.name }}</p>
+  <p>{{ this.type }}</p>
+  
+  <a href="/place/edit/{{ this.id }}"><button>Update</button></a>
+  
+  <form action="/place/delete/{{ this.id }}" method="POST">
+    <button>Delete</button>
+</form>
+</div>
+{{/each}}
+
+{{!-- {{ place.name }}
+<br>
+{{ place.type }}
+
+<a href="/place/{{ place._id }}/update">Update Place</a>
+
+<form action="/place/{{ place._id }}/delete" method="POST">
+  <button>Delete</button>
+</form> --}}

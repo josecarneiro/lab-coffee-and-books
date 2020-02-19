@@ -19,15 +19,19 @@ router.get('/create', (req, res, next) => {
 });
 
 router.post('/create', (req, res, next) => {
-  const { name, type } = req.body;
+  const { name, type, latitude, longitude } = req.body;
 
   Place.create({
     name,
-    type
+    type,
+    location: {
+      coordinates: [longitude, latitude]
+    }
   })
     .then(place => {
       console.log(place);
-      res.redirect('/place/list');
+      //res.redirect('/place/list');
+      res.redirect(`/place/${place._id}`);
     })
     .catch(error => {
       next(error);
@@ -60,11 +64,18 @@ router.get('/:id/edit', (req, res, next) => {
 
 router.post('/:id/edit', (req, res, next) => {
   const id = req.params.id;
-  const { name, type } = req.body;
+  const { name, type, latitude, longitude } = req.body;
 
-  Place.findByIdAndUpdate(id, { name, type })
+  Place.findByIdAndUpdate(id, {
+    name,
+    type
+    // location: {
+    //   coordinates: [longitude, latitude]
+    // }
+  })
     .then(() => {
-      res.redirect('/place/list');
+      // res.redirect('/place/list');
+      res.redirect(`/place/${id}`);
     })
     .catch(error => {
       next(error);

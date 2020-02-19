@@ -4,12 +4,17 @@
 <label for="name">Name</label>
 <input type="text" name="name" id="name" placeholder="Name">
 <br>
-<select name="type">
+<label for="latitude">Latitude</label>
+<input type="number" placeholder="From -90 to 90" name="latitude" id="latitude">
+<br>
+<label for="longitude">Longitude</label>
+<input type="number" placeholder="From -180 to 180" name="longitude" id="longitude">
+<br>
+<label for="type">Type</label>
+<select name="type" id="type">
     <option value="coffee shop">Coffee Shop</option>
     <option value="bookstore">Bookstore</option>
   </select>
 <br>
 <button>Create place</button>
 </form>
-<br>
-<h4><a href="/place/list">Go back to the list</a></h4>

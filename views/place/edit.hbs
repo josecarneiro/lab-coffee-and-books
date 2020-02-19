@@ -4,12 +4,19 @@
 <label for="name">Name</label>
 <input type="text" name="name" id="name" placeholder="Name" value="{{place.name}}">
 <br>
-<select name="type" value="{{place.type}}" selected>
+{{!-- <label for="latitude">Latitude</label>
+<input type="number" placeholder="From -90 to 90" name="latitude" id="latitude" value="{{place.location.coordinates.[1]}}">
+<br>
+<label for="longitude">Longitude</label>
+<input type="number" placeholder="From -180 to 180" name="longitude" id="longitude" value="{{place.location.coordinates.[0]}}">
+<br> --}}
+<label for="type">Type</label>
+<select name="type" id="type" value="{{place.type}}" selected>
     <option value="coffee shop">Coffee Shop</option>
     <option value="bookstore">Bookstore</option>
   </select>
 <br>
-<button>Edit place</button>
+<button>Edit</button>
 </form>
 <br>
-<h4><a href="/place/{{ place.id }}">Go back</a></h4>
+<h5><a href="/place/{{ place.id }}">Go back</a></h5>

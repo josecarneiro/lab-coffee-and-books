@@ -1,0 +1,37 @@
+<h1>This is single</h1>
+
+<div class="single-list">
+<img width=100px src="https://source.unsplash.com/random" alt="Random">
+<h4>{{data.name}}</h4>
+<p>{{data.type}}</p>
+<p>Location: {{data.lat}} , {{data.lng}}</p>
+
+<div id="sample-map"></div>
+
+    <script>
+      const $sampleMap = document.getElementById('sample-map');
+
+      function initMap () {
+        const map = new window.google.maps.Map($sampleMap, {
+          center: { lat: 38.75, lng: -9.25 },
+          zoom: 2
+        });
+
+        const position = {
+          lat: {{data.lat}}, 
+          lng: {{data.lng}} 
+        }
+
+        const marker = new window.google.maps.Marker({
+            position: position,
+            map
+          })
+
+
+      }
+    </script>
+
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBrJ1f_9MB0iFA2zFsHIbIK8sGWU91aQr8&callback=initMap"
+    async defer></script>
+
+</div>

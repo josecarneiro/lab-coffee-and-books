@@ -1,0 +1,38 @@
+<h1>Create a New Spot</h1>
+<p>Enter the new Place below...</p>
+
+<form action="/search" method="POST">
+  <label for="name">Name of Place</label>
+  <input type="text" name="name">
+
+  <label for="type">Name of Place</label>
+  <select name="type">
+    <option value="Coffee Shop">Coffee Shop</option>
+    <option value="Bookstore">Bookstore</option>
+  </select>
+
+  <label for="latitude">Latitude</label>
+  <input type="number" name="latitude">
+  <label for="longitude">Longitude</label>
+  <input type="number" name="longitude">
+
+<button>Create</button>
+{{!-- <button>Edit</button>
+<button>Delete</button> --}}
+
+
+{{#each data}}
+<a href="/search/{{ _id }}">
+<div display="flex" flex-direction="row" class="list"> 
+  <h4>{{name}}</h4>
+  <p>{{type}}</p>
+  <img width=100px src="https://source.unsplash.com/random" alt="Random">
+  <p>Location: {{lat}} , {{lng}} </p>
+  <form action="/search/delete/{{ _id }}" method="post">
+  <button><strong>Erase</strong> <br>{{name}}</button>
+  </form>
+</div>
+</a>
+{{/each}}
+
+</form>

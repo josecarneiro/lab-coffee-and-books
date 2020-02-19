@@ -1,0 +1,17 @@
+<a href="/">HOME</a>
+
+<h1>We will be listing everything here</h1>
+
+<a href="/places/create">Create a place</a>
+
+<ul>
+{{#each place}}
+    <a href="/places/{{this._id}}"><li>{{this.name}}</li></a>
+    <ul style="display: flex">
+        <a href="/places/update/{{this._id}}" style="margin-right: 20px"><button>Update</button></a>
+        <form action="/places/delete/{{this._id}}" method="POST">
+            <button>Delete</button>
+        </form>
+    </ul>
+{{/each}}
+</ul>

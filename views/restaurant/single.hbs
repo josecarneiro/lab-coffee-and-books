@@ -1,14 +1,14 @@
 <h1>{{ restaurant.name }}</h1>
-<span>{{ restaurant.specialty }}</span>
+<span>{{ restaurant.type }}</span>
 
-<span>{{ restaurant.location.coordinates.[0] }}</span>
-<span>{{ restaurant.location.coordinates.[1] }}</span>
+<p>Latitude  <span>{{ restaurant.location.coordinates.[1] }}</span></p>
+<p>Longitude: <span>{{ restaurant.location.coordinates.[0] }}</span></p>
 
-<div id="sample-map" class="map" style="height: 100%"></div>
-<div>a</div>
+<div id="map"></div>
+
 
 <script>
-  const $sampleMap = document.getElementById('sample-map');
+  const $map = document.getElementById('map');
 
   const position = {
     lat: {{ restaurant.location.coordinates.[1] }},
@@ -16,7 +16,7 @@
   };
 
   function initMap() {
-    const map = new window.google.maps.Map($sampleMap, {
+    map = new window.google.maps.Map($map, {
       center: position,
       zoom : 9
     });
@@ -24,13 +24,25 @@
     const marker = new window.google.maps.Marker({
       position,
       map
-    })
+    });
   }
 </script>
 
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAUm55eWjiFwtRCs9o4DI4tRkoc6CCeAec&callback=initMap"
-    async defer></script>
-
+{{> mapscripts}}
 
 <a href="/restaurant/edit/{{  restaurant._id }}">Edit Restaurant</a>
+
+<form action="/restaurant/delete/{{  restaurant._id }}" method="POST">
+  <button>Delete Restaurant</button>
+</form>
+
+
+
+
+    
+  
+    
+    
+  </body>
+</html>
 

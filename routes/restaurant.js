@@ -4,7 +4,6 @@ const { Router } = require('express');
 const router = new Router();
 const Restaurant = require('./../models/restaurant');
 
-
 router.get('/create', (req, res, next) => {
   res.render('restaurant/create');
 });
@@ -19,7 +18,7 @@ router.post('/create', (req, res, next) => {
       coordinates: [longitude, latitude]
     }
   })
-    .then( (restaurant) => {
+    .then(restaurant => {
       res.redirect(`/restaurant/${restaurant._id}`);
     })
     .catch(error => {
@@ -41,19 +40,34 @@ router.get('/edit/:id', (req, res, next) => {
     });
 });
 
-
 router.post('/edit/:id', (req, res, next) => {
   const id = req.params.id;
-  const data = {
-    name: req.body.name,
-    type: req.body.type,
-    latitude:req.body.latitude,
-    longitude:req.body.longitude
-  };
+  const { name, type, latitude, longitude } = req.body;
+  
+  Restaurant.findByIdAndUpdate(id, 
+    {
+      name,
+      type,
+      location:  {
+        coordinates: [longitude, latitude]
+      }
+    }, 
+    { runValidators: true })
+    .then(() => {
+      res.redirect(`/restaurant/${id}`);
+    })
+    .catch(error => {
+      next(error);
+    });
+});
 
-  Restaurant.findByIdAndUpdate( id, data , { runValidators: true })
-    .then( (restaurant) => {
-      res.redirect(`/restaurant/${restaurant._id}`);
+
+router.post('/delete/:id', (req, res, next) => {
+  const id = req.params.id;
+
+  Restaurant.findByIdAndDelete(id)
+    .then(restaurant => {
+      res.redirect(`/`);
     })
     .catch(error => {
       next(error);
@@ -63,8 +77,6 @@ router.post('/edit/:id', (req, res, next) => {
 router.get('/list', (req, res, next) => {
   res.render('restaurant/list');
 });
-
-
 
 router.get('/:restaurantId', (req, res, next) => {
   const { restaurantId } = req.params;
@@ -77,7 +89,5 @@ router.get('/:restaurantId', (req, res, next) => {
       next(error);
     });
 });
-
-
 
 module.exports = router;

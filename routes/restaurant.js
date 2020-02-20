@@ -43,16 +43,18 @@ router.get('/edit/:id', (req, res, next) => {
 router.post('/edit/:id', (req, res, next) => {
   const id = req.params.id;
   const { name, type, latitude, longitude } = req.body;
-  
-  Restaurant.findByIdAndUpdate(id, 
+
+  Restaurant.findByIdAndUpdate(
+    id,
     {
       name,
       type,
-      location:  {
+      location: {
         coordinates: [longitude, latitude]
       }
-    }, 
-    { runValidators: true })
+    },
+    { runValidators: true }
+  )
     .then(() => {
       res.redirect(`/restaurant/${id}`);
     })
@@ -60,7 +62,6 @@ router.post('/edit/:id', (req, res, next) => {
       next(error);
     });
 });
-
 
 router.post('/delete/:id', (req, res, next) => {
   const id = req.params.id;
@@ -77,6 +78,51 @@ router.post('/delete/:id', (req, res, next) => {
 router.get('/list', (req, res, next) => {
   res.render('restaurant/list');
 });
+
+router.post('/list', (req, res, next) => {
+  const { latitude, longitude, distance } = req.body;
+
+  Restaurant.find({
+    location: {
+      $nearSphere: {
+        $geometry: {
+          type: 'Point',
+          coordinates: [Number(longitude), Number(latitude)]
+        },
+        $maxDistance: 1000 * Number(distance)
+      }
+    }
+  })
+
+    .then(restaurants => {
+      res.render('restaurant/list', { restaurants });
+    })
+    .catch(error => {
+      next(error);
+    });
+});
+
+/*
+  const { latitude, longitude, distance } = req.query;
+
+  Restaurant.find({
+    location: {
+      $nearSphere: {
+        $geometry: {
+          type: 'Point',
+          coordinates: [Number(longitude), Number(latitude)]
+        },
+        $maxDistance: 1000 * Number(distance)
+      }
+    }
+  })
+    .then(restaurants => {
+      res.render('restaurant/list', { restaurants });
+    })
+    .catch(error => {
+      next(error);
+    });
+});*/
 
 router.get('/:restaurantId', (req, res, next) => {
   const { restaurantId } = req.params;

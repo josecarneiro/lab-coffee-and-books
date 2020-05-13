@@ -63,3 +63,19 @@ In this iteration, you should create full CRUD operations for `place.js` model -
 - [Google Maps API](https://developers.google.com/maps/)
 
 Happy coding! 💙
+
+create, update, delete and display all the places you save in the database
+
+display: OK
+GET - `place/list`
+
+create: OK
+GET - `/place/create`
+POST - `/place/create`
+
+edit:
+GET - `/place/:placeId/update`
+POST - `/place/:placeId/update`
+
+delete:
+POST - `place/placeId/delete`

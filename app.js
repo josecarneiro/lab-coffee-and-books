@@ -8,6 +8,9 @@ const sassMiddleware = require('node-sass-middleware');
 const serveFavicon = require('serve-favicon');
 const indexRouter = require('./routes/index');
 
+//importing the placeRouter
+const placeRouter = require('./routes/place');
+
 const app = express();
 
 app.set('views', join(__dirname, 'views'));
@@ -18,9 +21,10 @@ app.use(
   sassMiddleware({
     src: join(__dirname, 'public'),
     dest: join(__dirname, 'public'),
-    outputStyle: process.env.NODE_ENV === 'development' ? 'nested' : 'compressed',
+    outputStyle:
+      process.env.NODE_ENV === 'development' ? 'nested' : 'compressed',
     force: process.env.NODE_ENV === 'development',
-    sourceMap: true
+    sourceMap: true,
   })
 );
 app.use(express.static(join(__dirname, 'public')));
@@ -28,6 +32,9 @@ app.use(logger('dev'));
 app.use(express.urlencoded({ extended: true }));
 
 app.use('/', indexRouter);
+
+//mounting the router so its accessible from the app
+app.use('/place', placeRouter);
 
 // Catch missing routes and forward to error handler
 app.use((req, res, next) => {

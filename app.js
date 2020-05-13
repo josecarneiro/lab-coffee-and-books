@@ -8,6 +8,19 @@ const sassMiddleware = require('node-sass-middleware');
 const serveFavicon = require('serve-favicon');
 const indexRouter = require('./routes/index');
 
+//CONNECT DATABASE
+const mongoose = require('mongoose');
+const expressSession = require('express-session');
+const connectMongo = require('connect-mongo');
+const MongoStore = connectMongo(expressSession);
+mongoose.set('useFindAndModify', false);
+
+//IMPORT PLACE MODEL
+const Place = require('./models/place');
+
+//IMPORT PLACE ROUTE
+const placeRouter = require('./routes/place');
+
 const app = express();
 
 app.set('views', join(__dirname, 'views'));
@@ -28,6 +41,7 @@ app.use(logger('dev'));
 app.use(express.urlencoded({ extended: true }));
 
 app.use('/', indexRouter);
+app.use('/place', placeRouter);
 
 // Catch missing routes and forward to error handler
 app.use((req, res, next) => {

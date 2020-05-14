@@ -8,6 +8,12 @@ const sassMiddleware = require('node-sass-middleware');
 const serveFavicon = require('serve-favicon');
 const indexRouter = require('./routes/index');
 
+//HELPER NPM INSTALL HBS-JSON
+const hbs = require('hbs');
+const json = require('hbs-json');
+
+hbs.registerHelper('json', json);
+
 //CONNECT DATABASE
 const mongoose = require('mongoose');
 const expressSession = require('express-session');
@@ -20,6 +26,9 @@ const Place = require('./models/place');
 
 //IMPORT PLACE ROUTE
 const placeRouter = require('./routes/place');
+
+//Partial
+hbs.registerPartials(__dirname + '/views/partial');
 
 const app = express();
 

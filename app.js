@@ -8,6 +8,11 @@ const sassMiddleware = require('node-sass-middleware');
 const serveFavicon = require('serve-favicon');
 const indexRouter = require('./routes/index');
 
+// Allows us to output json to our script tags in the hbs templates
+const hbs = require('hbs');
+const hbsJson = require('hbs-json');
+hbs.registerHelper('json', hbsJson);
+
 const app = express();
 
 app.set('views', join(__dirname, 'views'));

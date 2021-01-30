@@ -1,0 +1,22 @@
+<h1>Add a shop!</h1>
+
+<form method="POST">
+    <label for="input-store-name">Add the name</label>
+    <input type="text" name="name" id="input-store-name"required placeholder="Store name">
+
+    <label for="input-store-name">Add the store type</label>
+    <select name="type" id="input-store-name"required > 
+        <option value='' selected disabled>Select store type</option>
+        <option value='coffee_shop'>Coffee shop</option>
+        <option value="bookstore">Bookstore</option>
+    </select>
+    <br>
+
+    <label for="longitude">Longitude</label>
+    <input type="text" name="longitude" id="longitude" placeholder="longitude" required>
+    
+    <label for="latitude">Latitude</label>
+    <input type="text" name="latitude" id="latitude" placeholder="latitude" required>
+    <br>
+    <button>Add the location!</button>
+</form>

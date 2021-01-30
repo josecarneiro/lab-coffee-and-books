@@ -1,2 +1,32 @@
-<h1>{{title}}</h1>
-<p>Welcome to {{title}}</p>
+<p>Welcome</p>
+
+
+<div id="example-map"></div>
+
+<script>
+    function initMap () {
+        const mapElement = document.getElementById('example-map')
+        let map = new google.maps.Map(mapElement, {
+            center: {lat: 52.55787, lng: 13.33557}, zoom: 1})
+        
+        const places = {{{ json places }}};
+
+        for (let place of places) {
+            const marker = new google.maps.Marker({
+                position: {
+                lat: place.location.coordinates[1],
+                lng: place.location.coordinates[0]
+            },
+            map: map
+         })
+        }
+
+       //We need to access the variables but this section is not handlebards, so we can't just access the object we send with the res.render
+        //Solution is by using a package called Npm package hbs-json
+        
+        //const placeMarker = new google.maps.Marker({
+        //})
+    }
+</script>
+
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB0DqXPpPxcJTpR7EvVNsWAUVTKLQZclUw&callback=initMap" defer></script>

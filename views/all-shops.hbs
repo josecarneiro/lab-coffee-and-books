@@ -1,0 +1,10 @@
+<h1>Shows an overview of ALL the shops</h1>
+
+{{#each allPlaces}}
+    <a href="/update">
+        {{name}}
+        {{type}}
+        {{createdAt}}
+        <button>Edit</button>
+    </a>
+{{/each}}

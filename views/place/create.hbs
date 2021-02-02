@@ -1,0 +1,15 @@
+<h2>Add a new Place</h2>
+
+<form method="POST" enctype="multipart/form-data">
+  <label for="input-name">Name</label>
+  <input type="text" id="input-name" name="name" placeholder="Name" required/>
+
+  <label for="input-category">Type</label>
+  <select name="category" id="input-category" required>
+  <option value="" selected disabled>Category</option> <!-- Display empty placeholder value-->
+  <option value="coffee_shop">Coffee Shop</option>
+  <option value="book_store">Book Store</option>
+  </select>
+  <br>
+<button>Submit</button>
+</form>

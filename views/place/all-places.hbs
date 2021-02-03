@@ -1,2 +1,46 @@
-<h1>{{place.name}}</h1>
-<small>{{place.type}}</small>
+<h1>List of Places</h1>
+{{#each places}}
+    <a href="/place/{{_id}}">{{name}}</a>
+    <small>{{typeOfPlace}}</small>
+    <form action="/place/{{_id}}/delete" method="POST">
+    <button>Delete</button>
+    </form>
+    <form action="/place/{{_id}}/edit" method="GET">
+    <button>Edit</button>
+    </form>
+{{/each}}
+
+
+<div id="map"></div>
+
+<script>
+  function createMap () {
+    const mapElement = document.getElementById('map');
+
+    const map = new google.maps.Map(mapElement, {
+      center: {
+        lat: 38,
+        lng: -9
+      },
+      zoom: 8
+    });
+
+    const places = {{{ json places }}};
+
+    for (let place of places) {
+      const marker = new google.maps.Marker({
+        position: {
+          lat: place.location.coordinates[1],
+          lng: place.location.coordinates[0]
+        },
+        map: map
+      })
+
+      marker.addListener('click', () => {
+        window.location = `/place/${place._id}`;
+      });
+    }
+  }
+</script>
+
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB0DqXPpPxcJTpR7EvVNsWAUVTKLQZclUw&callback=createMap" defer></script>

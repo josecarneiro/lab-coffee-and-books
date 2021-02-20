@@ -1,0 +1,22 @@
+<h2>Add a new Place</h2>
+
+<form method="POST" enctype="multipart/form-data">
+  <label for="input-name">Name</label>
+  <input type="text" id="input-name" name="name" placeholder="Name" required/>
+
+  <label for="input-category">Type</label>
+  <select name="category" id="input-category" required>
+  <option value="" selected disabled>Category</option> <!-- Display empty placeholder value-->
+  <option value="coffee_shop">Coffee Shop</option>
+  <option value="book_store">Book Store</option>
+  <br>
+  <label for="input-latitude">Latitude</label>
+  <input type="number" id="input-latitude" name="latitude" placeholder="Latitude" min="-90" max="90" />
+  <br> 
+  <label for="input-longitude">Longitude</label>
+  <input type="number" id="input-longitude" name="longitude" placeholder="Longitude" min="180" max="180" />
+
+  </select>
+  <br>
+<button>Add a New Place</button>
+</form>

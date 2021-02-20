@@ -7,11 +7,20 @@ const logger = require('morgan');
 const sassMiddleware = require('node-sass-middleware');
 const serveFavicon = require('serve-favicon');
 const indexRouter = require('./routes/index');
-
+const placesRouter = require('./routes/places');
+const path = require('path');
 const app = express();
 
-app.set('views', join(__dirname, 'views'));
+// Allows us to output json to our script tags in the hbs templates
+const hbs = require('hbs');
+const hbsJson = require('hbs-json');
+
+hbs.registerHelper('json', hbsJson);
+
+app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
+
+hbs.registerPartials(path.join(__dirname, 'views/partials'));
 
 app.use(serveFavicon(join(__dirname, 'public/images', 'favicon.ico')));
 app.use(
@@ -28,6 +37,7 @@ app.use(logger('dev'));
 app.use(express.urlencoded({ extended: true }));
 
 app.use('/', indexRouter);
+app.use('/place', placesRouter);
 
 // Catch missing routes and forward to error handler
 app.use((req, res, next) => {
